@@ -34,7 +34,7 @@ public:
 
 		try {
 			if (dir != L"here-warn" && dir != L"here") {
-				path = wstring(dir);
+				path = dir;
 			}
 			else if (dir == L"here-warn"){
 				cout << "Warning, close the program if you don't want to mess with this directory. This could break your computer if running from the wrong directory. Otherwise write start." << endl;
@@ -91,7 +91,7 @@ public:
 			} while (FindNextFile(hFind, &data));
 		}
 		else { //If hFind == invalid handle
-			cout << "Fail." << endl;
+			cout << "Fail, not a folder." << endl;
 			err = GetLastError();
 		}
 		FindClose(hFind);
@@ -152,7 +152,13 @@ int main(int argc, char* argv[])
 {
 	wstring dir = L"here-warn";
 	if (argc > 1) {
-		string s = argv[1];
+		string s = "";
+		for (int i = 0; i < argc; i++) {
+			if (i == 0) continue;
+			s = s + argv[i];
+			s = s + " ";
+		}
+		s.pop_back();
 		dir = wstring(s.begin(), s.end());
 	}
 	ArrangeDir process1 (dir);
