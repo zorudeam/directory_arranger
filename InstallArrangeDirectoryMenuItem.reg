@@ -1,0 +1,8 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Directory\shell\arrange-dir]
+@="Arrange Directory"
+"NoWorkingDirectory"=""
+
+[HKEY_CLASSES_ROOT\Directory\shell\arrange-dir\command]
+@="cmd /c \"C:\\Program Files\\ArrangeDir\\arrange-dir.exe\" %1"
